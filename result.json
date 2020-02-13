@@ -1,0 +1,1 @@
+[{"==":["Jane",{"substr":[{"var":"name"},0,3]}]},{"==":["category","Beverages"]},{"!=":["name","Coffee"]},{"==":["category","Food"]},{"==":["name","Tea"]},{"==":["Jane",{"substr":[{"var":"name"},0,3]}]}]
