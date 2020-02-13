@@ -1,0 +1,11 @@
+{
+  "name": "kendofilter2jsonlogic",
+  "version": "0.0.1",
+  "description": "An interpreter for KendoFilter to the format of JsonLogic.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jacky Tseng <csps50404@gmail.com>",
+  "license": "ISC"
+}
