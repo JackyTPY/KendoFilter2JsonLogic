@@ -2,33 +2,61 @@
 
 An interpreter for KendoFilter to the format of JsonLogic.
 
-## Install
+## How to Get Filter Data Form Kendo ?
 
-```npm
-npm install --save KendoFilter2JsonLogic
+Assume this is the container of KendoFilter.
+
+```html
+<div id="filter"></div>
 ```
 
-## Caution
-
-KendoFilter doesn't consider about lower case and upper case, but JsonLogic does. Therefore, I create a new operator 'lc' which means lower case.
+You may apply filter like this
 
 ```javascript
-function toLowerCase(a){
-  return a.toLowerCase()
-}
-
-jsonLogic.add_operation("lc", toLowerCase)
+$("#filter").kendoFilter({
+    dataSource: dataSource,
+    expressionPreview: true,
+    applyButton: true,
+    fields: [
+        { name: "name", type: "string", label: "Name" },
+        { name: "price", type: "number", label: "Price" },
+        { name: "description", type: "string", label: "Description" }
+    ],
+    expression: {
+        logic: "or",
+        filters: [
+            { field: "price", value: 5, operator: "gte" },
+            { field: "name", value: "salad", operator: "contains" }
+        ]
+    }
+}).data("kendoFilter").applyFilter();
 ```
+
+So the method to get filter data is 
+
+```javascript
+$("#filter").data("kendoFilter").filterModel
+
+//{
+//    logic: "or",
+//    filters: [
+//        { field: "price", value: 5, operator: "gte" },
+//        { field: "name", value: "salad", operator: "contains" }
+//    ]
+//}
+```
+
+
 
 ## Usage
 
 ```javascript
-import KendoFilter2JsonLogic from 'KendoFilter2JsonLogic'
+import KendoFilter2JsonLogic from './KendoFilter2JsonLogic.js'
 
 var KendoFilterRules = { field: "name", value: "salad", operator: "contains"}
 
 var jsonLogicRules = KendoFilter2JsonLogic(KendoFilterRules)
-// { "in": [{"lc": "salad" , { "lc": { "var": "name"}}]}
+// { "in": ["salad" , { "var": "name"}]}
 ```
 
 ## Advanced Usage
@@ -76,25 +104,17 @@ var jsonLogicRules = KendoFilter2JsonLogic(KendoFilterRules)
 //       "or": [
 //         {
 //           "in": [
+//             "salad",
 //             {
-//               "lc": "salad"
-//             },
-//             {
-//               "lc": {
 //                 "var": "name"
-//               }
 //             }
 //           ]
 //         },
 //         {
 //           "in": [
+//             "sushi",
 //             {
-//               "lc": "sushi"
-//             },
-//             {
-//               "lc": {
 //                 "var": "name"
-//               }
 //             }
 //           ]
 //         }
@@ -119,3 +139,7 @@ var jsonLogicRules = KendoFilter2JsonLogic(KendoFilterRules)
 //   ]
 // }
 ```
+
+## Caution
+
+KendoFilter doesn't consider about upper case and lower case, but JsonFilter Does.

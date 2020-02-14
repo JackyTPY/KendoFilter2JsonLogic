@@ -1,4 +1,4 @@
-const Kendo2JsonLogic = require('../index.js')
+const Kendo2JsonLogic = require('../Kendo2JsonLogic.js/index.js')
 const fs = require('fs')
 const jsonLogic = require('json-logic-js')
 
