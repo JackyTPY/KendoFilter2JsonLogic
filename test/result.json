@@ -1,1 +1,1 @@
-{"or":[{"or":[{"in":[{"lc":"salad"},{"lc":{"var":"name"}}]},{"in":[{"lc":"sushi"},{"lc":{"var":"name"}}]}]},{">":[{"var":"price"},10]},{"<=":[{"var":"price"},25]}]}
+{"and":[{"or":[{"in":["Salad",{"var":"name"}]},{"in":["sushi",{"var":"name"}]}]}]}

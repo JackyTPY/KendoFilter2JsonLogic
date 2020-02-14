@@ -1,12 +1,12 @@
 {
-    "logic": "or",
+    "logic": "and",
     "filters": [
         {
             "logic": "or",
             "filters": [
                 {
                     "field": "name",
-                    "value": "salad",
+                    "value": "Salad",
                     "operator": "contains"
                 },
                 {
@@ -15,16 +15,6 @@
                     "operator": "contains"
                 }
             ]
-        },
-        {
-            "field": "price",
-            "value": 10,
-            "operator": "gt"
-        },
-        {
-            "field": "price",
-            "value": 25,
-            "operator": "lte"
         }
     ]
 }
