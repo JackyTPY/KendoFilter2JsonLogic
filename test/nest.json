@@ -1,0 +1,25 @@
+{
+    "logic": "and",
+    "filters": [
+        {
+            "field": "price",
+            "value": 5,
+            "operator": "gte"
+        },
+        {
+            "logic": "or",
+            "filters": [
+                {
+                    "field": "name",
+                    "value": "salad",
+                    "operator": "contains"
+                },
+                {
+                    "field": "name",
+                    "value": "Salmon",
+                    "operator": "contains"
+                }
+            ]
+        }
+    ]
+}
