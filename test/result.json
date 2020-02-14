@@ -1,1 +1,1 @@
-{"and":[{"or":[{"in":[{"lc":"salad"},{"lc":{"var":"name"}}]},{"in":[{"lc":"sushi"},{"lc":{"var":"name"}}]}]},{">":[{"var":"price"},10]},{"<=":[{"var":"price"},25]}]}
+{"or":[{"or":[{"in":[{"lc":"salad"},{"lc":{"var":"name"}}]},{"in":[{"lc":"sushi"},{"lc":{"var":"name"}}]}]},{">":[{"var":"price"},10]},{"<=":[{"var":"price"},25]}]}

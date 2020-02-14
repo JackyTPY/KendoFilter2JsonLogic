@@ -1,5 +1,5 @@
 {
-    "logic": "and",
+    "logic": "or",
     "filters": [
         {
             "logic": "or",
