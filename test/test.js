@@ -10,17 +10,16 @@ data = JSON.parse(data)
 
 var result = Kendo2JsonLogic(rules)
 
-var temp = {
+var filter = {
   "filter": [
     { "var": "" },
     result
   ]
 }
 
-var tempr = jsonLogic.apply(temp, data)
+var filterResult = jsonLogic.apply(filter, data)
 
-
-console.log(tempr)
-console.log('---- ' + tempr.length + ' items ----')
-
-fs.writeFile('./test/result.json', JSON.stringify(result), e => console.log('finish'))
+fs.writeFile('./test/result.json', JSON.stringify(result), e => {
+  console.log(filterResult)
+  console.log('---- ' + filterResult.length + ' items ----')
+})

@@ -2,11 +2,6 @@
     "logic": "and",
     "filters": [
         {
-            "field": "price",
-            "value": 5,
-            "operator": "gte"
-        },
-        {
             "logic": "or",
             "filters": [
                 {
@@ -16,10 +11,20 @@
                 },
                 {
                     "field": "name",
-                    "value": "Salmon",
+                    "value": "sushi",
                     "operator": "contains"
                 }
             ]
+        },
+        {
+            "field": "price",
+            "value": 10,
+            "operator": "gt"
+        },
+        {
+            "field": "price",
+            "value": 25,
+            "operator": "lte"
         }
     ]
 }
