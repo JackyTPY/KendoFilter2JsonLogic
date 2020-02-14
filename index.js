@@ -1,4 +1,4 @@
-
+const jsonLogic = require('json-logic-js')
 
 const Kendo2JsonLogic = function (rule) {
   let result = analyzeLogic(rule)
@@ -47,10 +47,10 @@ function analyzeOperator(rule) {
       return { '>=': [{ 'var': rule.field }, rule.value] }
 
     case 'contains':
-      return { 'in': [rule.value, { 'var': rule.field }] }
+      return { 'in': [ {'lc': rule.value}, {'lc': { 'var': rule.field }}] }
 
     case 'doesnotcontain':
-      return { '!': [{ 'in': [rule.value, { 'var': rule.field }] }] }
+      return { '!': [{ 'in': [ {'lc': rule.value}, {'lc': { 'var': rule.field }}] }] }
 
     case 'isnull':
       return { '==': [{ 'var': rule.field }, null] }
@@ -59,16 +59,16 @@ function analyzeOperator(rule) {
       return { '!=': [{ 'var': rule.field }, null] }
 
     case 'startswith':
-      return { '==': [rule.value, { 'substr': [{ 'var': rule.field }, 0, rule.value.length] }] }
+      return { '==': [{'lc': rule.value}, {'lc': { 'substr': [{ 'var': rule.field }, 0, rule.value.length] }}] }
 
     case 'doesnotstartwith':
-      return { '!=': [rule.value, { 'substr': [{ 'var': rule.field }, 0, rule.value.length] }] }
+      return { '!=': [{'lc': rule.value}, {'lc': { 'substr': [{ 'var': rule.field }, 0, rule.value.length] }}] }
 
     case 'endswith':
-      return { '==': [rule.value, { 'substr': [{ 'var': rule.field }, -rule.value.length] }] }
+      return { '==': [{'lc': rule.value}, {'lc': { 'substr': [{ 'var': rule.field }, -rule.value.length] }}] }
 
     case 'doesnotendwith':
-      return { '!=': [rule.value, { 'substr': [{ 'var': rule.field }, -rule.value.length] }] }
+      return { '!=': [{'lc': rule.value}, {'lc': { 'substr': [{ 'var': rule.field }, -rule.value.length] }}] }
 
     case 'isempty':
       return { '!': [{ 'var': rule.field }] }
@@ -77,5 +77,11 @@ function analyzeOperator(rule) {
       return { '!!': [{ 'var': rule.field }] }
   }
 }
+
+function toLowerCase(a){
+  return a.toLowerCase()
+}
+
+jsonLogic.add_operation("lc", toLowerCase);
 
 module.exports = Kendo2JsonLogic
